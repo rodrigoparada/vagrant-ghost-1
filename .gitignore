@@ -3,6 +3,9 @@ ghost-latest
 # Themes directory moved from Ghost folder for easier access
 themes
 
+# Vagrant temp files
+.vagrant
+
 # ---
 # Node.gitignore by GitHub
 # https://github.com/github/gitignore/blob/master/Node.gitignore

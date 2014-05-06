@@ -20,6 +20,9 @@ then
     # Edit config.js to allow connections from outside the VM
     sed -i "s/127.0.0.1/0.0.0.0/g" ./config.js
     
+    # Copy pre-filled database
+    cp ../vagrant/ghost-dev-prefilled.db ./content/data/ghost-dev.db
+    
     # Create alias for starting node-Server
     echo "alias startghost='cd ${BASE_DIR}/${GHOST_DIR_NAME} && npm start'" >> /home/vagrant/.profile
     
@@ -27,6 +30,8 @@ then
     if [ ! -d "${BASE_DIR}/themes" ]
     then
         mv ${BASE_DIR}/${GHOST_DIR_NAME}/content/themes ${BASE_DIR}
+    else
+        rm -fd ${BASE_DIR}/${GHOST_DIR_NAME}/content/themes/
     fi
     ln -s ${BASE_DIR}/themes ${BASE_DIR}/${GHOST_DIR_NAME}/content/themes
 fi
