@@ -1,0 +1,29 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+HOSTPORT = "1234"
+GUESTIP = "192.168.33.10"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "hashicorp/precise64"
+  config.vm.hostname = "ghost-ubuntu"
+  config.vm.box_check_update = false
+
+  config.vm.network "forwarded_port", guest: 2368, host: HOSTPORT
+  # config.vm.network "private_network", ip: GUESTIP
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  #config.vm.synced_folder "./ghost-0.4.2", "/var/www"
+  config.vm.synced_folder "../", "/vagrant"
+
+  config.vm.provision :shell, :path => "shell/install-tools.sh"
+  config.vm.provision :shell, :path => "shell/install-nodejs.sh"
+  config.vm.provision :shell, :path => "shell/install-ghost.sh"
+    #config.vm.provision :shell, :path => "shell/config.sh"
+  #  config.vm.provision :shell, :path => "shell/test.sh"
+  
+end

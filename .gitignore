@@ -1,3 +1,7 @@
+# Ghost directory downloaded by the shell provisioning script
+ghost-latest
+# Themes directory moved from Ghost folder for easier access
+themes
 
 # ---
 # Node.gitignore by GitHub
