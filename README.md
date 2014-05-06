@@ -13,7 +13,7 @@ Basic Information:
 ## Usage
 Clone this repository:
 ```bash
-git clone ...
+git clone https://github.com/hanneshauer/vagrant-ghost
 ```
 Fire up Vagrant:
 ```bash
